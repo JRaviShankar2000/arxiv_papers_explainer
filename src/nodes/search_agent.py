@@ -59,5 +59,23 @@ def search_agent(state: AgentState) -> AgentState:
         )
 
     logger.info("Found %d paper(s) for query %r.", len(papers), query)
+
+    # Print a quick summary so you can decide which papers to explore deeper.
+    print(f"\n{'='*60}")
+    print(f"📚 Top {len(papers)} papers for: {query}")
+    print(f"{'='*60}")
+    for i, p in enumerate(papers, 1):
+        authors = ", ".join(p.authors[:3])
+        if len(p.authors) > 3:
+            authors += " et al."
+        short_summary = p.summary[:300]
+        if len(p.summary) > 300:
+            short_summary += "…"
+        print(f"\n  [{i}] {p.title}")
+        print(f"      Authors: {authors}")
+        print(f"      arXiv: {p.url}")
+        print(f"      Summary: {short_summary}")
+        print(f"      {'─'*55}")
+
     state.papers = papers
     return state
