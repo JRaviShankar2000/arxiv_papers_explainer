@@ -45,6 +45,10 @@ class AgentState(BaseModel):
     original_query: str = Field(
         default="", description="The user's research question or topic"
     )
+    target_paper_id: str = Field(
+        default="",
+        description="arXiv ID of the paper to explain — set when a single paper is selected for deep-dive.",
+    )
 
     # ---- Search phase ----
     papers: list[PaperMetadata] = Field(
