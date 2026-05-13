@@ -15,7 +15,7 @@ arxiv_client = Client(page_size=100, delay_seconds=3.0, num_retries=5)
 # DeepSeek-compatible LLM
 _LLM_API_KEY = os.environ.get(
     "DEEPSEEK_API_KEY",
-    "REMOVED_DEEPSEEK_API_KEY",
+    "",
 )
 llm = ChatOpenAI(
     model="deepseek-chat",
