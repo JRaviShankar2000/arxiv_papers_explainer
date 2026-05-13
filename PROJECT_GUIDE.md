@@ -377,7 +377,27 @@ Same as normal run, but writes the final draft to `review.md`.
 
 ---
 
-## How to Set Up and Run
+## Docker Setup (Recommended)
+
+```bash
+# Build the image (run once after cloning)
+docker build -t arxiv-explainer .
+
+# Run with your API key
+docker run --rm -e DEEPSEEK_API_KEY="your-key-here" arxiv-explainer "graph neural networks"
+
+# Save output to a file on your machine
+docker run --rm -e DEEPSEEK_API_KEY="your-key" -v "$(pwd):/app" arxiv-explainer "topic" --output review.md
+
+# Enable verbose logging
+docker run --rm -e DEEPSEEK_API_KEY="your-key" arxiv-explainer "quantum computing" --verbose
+```
+
+No Python, venvs, or packages needed on your machine — just Docker Desktop.
+
+---
+
+## How to Set Up and Run (Without Docker)
 
 ### Step 1: Install Python
 
